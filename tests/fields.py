@@ -254,6 +254,10 @@ class IntegerFieldTest(TestCase):
         self.assertEqual(len(form.b.errors), 1)
         form = self.F(b=9)
         self.assertEqual(form.b.data, 9)
+        form = self.F(DummyPostData(a=[], b=[]), a=6, b=9)
+        self.assertEqual(form.a.data, None)
+        self.assertEqual(form.b.data, None)
+        self.assert_(form.validate())
 
 
 class DecimalFieldTest(TestCase):

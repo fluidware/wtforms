@@ -401,6 +401,8 @@ class SelectField(SelectFieldBase):
                 self.data = self.coerce(valuelist[0])
             except ValueError:
                 raise ValueError(self.gettext(u'Invalid Choice: could not coerce'))
+        else:
+            self.data = None
 
     def pre_validate(self, form):
         for v, _ in self.choices:
@@ -523,6 +525,8 @@ class IntegerField(TextField):
                 self.data = int(valuelist[0])
             except ValueError:
                 raise ValueError(self.gettext(u'Not a valid integer value'))
+        else:
+            self.data = None
 
 
 class DecimalField(TextField):
@@ -568,6 +572,8 @@ class DecimalField(TextField):
                 self.data = decimal.Decimal(valuelist[0])
             except (decimal.InvalidOperation, ValueError):
                 raise ValueError(self.gettext(u'Not a valid decimal value'))
+        else:
+            self.data = None
 
 
 class FloatField(TextField):
@@ -590,6 +596,8 @@ class FloatField(TextField):
                 self.data = float(valuelist[0])
             except ValueError:
                 raise ValueError(self.gettext(u'Not a valid float value'))
+        else:
+            self.data = None
 
 
 class BooleanField(Field):
@@ -639,6 +647,8 @@ class DateTimeField(Field):
             except ValueError:
                 self.data = None
                 raise
+        else:
+            self.data = None
 
 
 class DateField(DateTimeField):
@@ -657,6 +667,8 @@ class DateField(DateTimeField):
             except ValueError:
                 self.data = None
                 raise
+        else:
+            self.data = None
 
 
 class SubmitField(BooleanField):

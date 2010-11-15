@@ -40,7 +40,7 @@ class Field(object):
     _translations = DummyTranslations()
 
     def __new__(cls, *args, **kwargs):
-        if '_form' in kwargs and '_name' in kwargs:
+        if '_name' in kwargs:
             return super(Field, cls).__new__(cls)
         else:
             return UnboundField(cls, *args, **kwargs)

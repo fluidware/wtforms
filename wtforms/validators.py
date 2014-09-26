@@ -252,7 +252,7 @@ class URL(Regexp):
     """
     def __init__(self, require_tld=True, message=None):
         tld_part = (require_tld and ur'\.[a-z]{2,10}' or u'')
-        regex = ur'^[a-z]+://([^/:]+%s|([0-9]{1,3}\.){3}[0-9]{1,3})(:[0-9]+)?(\/.*)?$' % tld_part
+        regex = ur'^[a-z]+://([^/:]+%s|([0-9]{1,3}\.){3}[0-9]{1,3})(:[0-9]+)?((\/)?.*)?$' % tld_part
         super(URL, self).__init__(regex, re.IGNORECASE, message)
 
     def __call__(self, form, field):
